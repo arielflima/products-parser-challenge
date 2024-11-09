@@ -1,0 +1,51 @@
+{
+  "name": "products-parser-challenge",
+  "version": "1.0.0",
+  "description": "## Introdução",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "npm run generate && ts-node src/index.ts",
+    "format": "prettier --write \"src/**/*.{js,ts,json,md}\"",
+    "generate": "npx prisma generate",
+    "migrate": "npx prisma migrate dev --name init",
+    "start": "npm run generate && tsc && node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arielflima/products-parser-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arielflima/products-parser-challenge/issues"
+  },
+  "homepage": "https://github.com/arielflima/products-parser-challenge#readme",
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "axios": "^1.7.7",
+    "express": "^4.21.1",
+    "node-cron": "^3.0.3",
+    "pg": "^8.13.1",
+    "tar": "^7.4.3",
+    "winston": "^3.16.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.9.0",
+    "@types/node-cron": "^3.0.11",
+    "@typescript-eslint/eslint-plugin": "^8.13.0",
+    "@typescript-eslint/parser": "^8.13.0",
+    "eslint": "^9.14.0",
+    "globals": "^15.12.0",
+    "prettier": "^3.3.3",
+    "prisma": "^5.22.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.13.0"
+  }
+}

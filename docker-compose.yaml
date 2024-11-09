@@ -1,0 +1,21 @@
+services:
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URL: 'postgresql://admin:admin123@db:5432/development?schema=public'
+      DOWNLOAD_DIR: 'downloads'
+      FOOD_DATA_BASE_URL: 'https://challenges.coode.sh/food/data/json/'
+      FOOD_DATA_INDEX_URL: 'https://challenges.coode.sh/food/data/json/index.txt'
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: development
+    ports:
+      - '5432:5432'

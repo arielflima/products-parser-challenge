@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ImportHistoryStatus {
+  SUCCESS
+  FAILED
+  IN_PROGRESS
+}
+
+enum ProductStatus {
+  PUBLISHED
+  DRAFT
+  TRASH
+}
+
+model ImportHistory {
+  id           Int                 @id @default(autoincrement())
+  importDate   DateTime            @default(now())
+  filename     String
+  status       ImportHistoryStatus
+  errorMessage String?
+}
+
+model Product {
+  id               Int           @id @default(autoincrement())
+  brands           String
+  categories       String
+  cities           String?
+  code             Int
+  created_t        Int
+  creator          String
+  image_url        String
+  ingredients_text String
+  imported_t       DateTime      @default(now())
+  labels           String
+  last_modified_t  Int
+  main_category    String
+  nutriscore_grade String
+  nutriscore_score Int
+  product_name     String
+  purchase_places  String
+  quantity         String
+  serving_quantity Float
+  serving_size     String
+  status           ProductStatus
+  stores           String
+  traces           String
+  url              String
+}
