@@ -32,24 +32,26 @@ model Product {
   brands           String
   categories       String
   cities           String?
-  code             Int
-  created_t        Int
+  code             String        @unique
+  created_t        String
   creator          String
+  deleted_t        DateTime?
   image_url        String
   ingredients_text String
-  imported_t       DateTime      @default(now())
+  imported_t       DateTime
   labels           String
-  last_modified_t  Int
+  last_modified_t  String
   main_category    String
   nutriscore_grade String
-  nutriscore_score Int
+  nutriscore_score String
   product_name     String
   purchase_places  String
   quantity         String
-  serving_quantity Float
+  serving_quantity String
   serving_size     String
   status           ProductStatus
   stores           String
   traces           String
+  updated_t        DateTime?
   url              String
 }

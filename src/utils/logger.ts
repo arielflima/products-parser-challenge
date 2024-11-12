@@ -1,9 +1,21 @@
 import { createLogger, format, transports } from 'winston';
+import { format as formatDate, toZonedTime } from 'date-fns-tz';
+import { TIMEZONE, DATE_MASK_DEFAULT } from '../infra/constants';
+
+const timezoned = () => {
+  const date = new Date();
+  const zonedDate = toZonedTime(date, TIMEZONE);
+  return formatDate(zonedDate, DATE_MASK_DEFAULT, {
+    timeZone: TIMEZONE,
+  });
+};
 
 const logger = createLogger({
   level: 'info',
   format: format.combine(
-    format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+    format.timestamp({
+      format: timezoned,
+    }),
     format.errors({ stack: true }),
     format.splat(),
     format.json(),
